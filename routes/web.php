@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/articles/{id}', function ($articleid) {
+    $articles =[
+        1=> [
+        'title'=> "article $articleid",
+        'content'=>"$articleid$articleid$articleid$articleid"
+        ],
+        2=> [
+            'title'=> "article $articleid",
+        'content'=>"$articleid$articleid$articleid$articleid"
+    
+        ]];
+    return view('articles',['article' => $articles[$articleid]]);
+});
+
+
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
