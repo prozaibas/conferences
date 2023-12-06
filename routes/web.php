@@ -15,16 +15,13 @@ use \App\Http\Controllers\ArticlesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('articles', ArticlesController::class)->except(['destroy']);
-
+Route::resource('articles', ArticlesController::class);
 Route::get('/', function () {
     return view('index');
 });
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('articles/create',[ArticlesController::class, 'create'])->name('articles.create');
-Route::post('articles/store',[ArticlesController::class, 'store'])->name('articles.store');
 
 Route::middleware('auth')->group(function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -14,18 +14,6 @@ class ArticlesController extends Controller
     /**
      * Display a listing of the resource.
      */
-
-     protected array $articles = [
-        1 =>[
-            'title' => 'First article',
-            'content' => 'Lorem ipsum dolor sis amet.'
-        ],
-        2 => [
-            'title' => 'Second article',
-            'content' => 'Aut ducimus enim in veniam.'
-        ]
-        ];
-
     public function index()
     {
         $article = new Article();
@@ -65,24 +53,36 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        return view('articles.edit', ['article' => Article::findorFail($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreArticleRequest $request, int $id)
     {
-        //
+        $article = (new Article())->findOrFail($id);
+        $validated = $request->validated();
+        $article->fill($validated);
+        $article->save();
+
+        $request->session()->flash('status', 'Article was updated!');
+
+        return redirect()->route('articles.show', ['article' => $article->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $article = (new Article())->findOrFail($id);
+        $article->delete();
+
+        session()->flash('status', 'Article was deleted!');
+
+        return redirect()->route('articles.index');
     }
 }
