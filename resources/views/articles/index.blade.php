@@ -1,8 +1,8 @@
 @extends ('layouts.app')
 
-@section('title','Articles')
-
 @section('content')
-<h1>{{$article['title']}}</h1>
+    @foreach($articles as $article)
+<h1>{{$article['title']}} </h1>
 <p>{{$article['content']}}</p>
+    @endforeach
 @endsection
