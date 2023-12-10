@@ -17,12 +17,19 @@ class ConferencesSeeder extends Seeder
         (new Conference())->insert([
             [
                 'title' => Lorem::sentence(5),
-                'description' => Lorem::text()
+                'description' => Lorem::text(),
+                'time' => "2023-09-30",
+                'adress' => "aabbbccc",
+                'members' => "2"
             
             ],
             [
                 'title' => Lorem::sentence(5),
-                'description' => Lorem::text()
+                'description' => Lorem::text(),
+                'time' => "2023-09-30",
+                'adress' => "aabbbccc",
+                'members' => "2"
+
             ]
         ]);
     }

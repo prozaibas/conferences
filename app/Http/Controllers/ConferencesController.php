@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Conference;
 use App\Http\Requests\StoreConferenceRequest;
 
+
 class ConferencesController extends Controller
 {
      /**

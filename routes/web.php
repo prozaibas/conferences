@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\HomeController;
-use \App\Http\Controllers\ArticlesController;
 use \App\Http\Controllers\ConferencesController;
 
 /*
@@ -17,7 +15,7 @@ use \App\Http\Controllers\ConferencesController;
 |
 */
 Route::get('/', function () {
-    return view('index');
+    return view('/index');
 });
 
 
