@@ -16,14 +16,10 @@ use \App\Http\Controllers\ConferencesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('articles', ArticlesController::class);
-
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/contact', function () {
-    return view('contact');
-});
+
 
 Route::middleware('auth')->group(function(){
 Route::resource('conferences', ConferencesController::class);
