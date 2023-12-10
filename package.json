@@ -18,6 +18,7 @@
         "sass-loader": "^12.1.0"
     },
     "dependencies": {
-        "flatpickr": "^4.6.13"
+        "flatpickr": "^4.6.13",
+        "vue-navigation-bar": "^6.1.0"
     }
 }

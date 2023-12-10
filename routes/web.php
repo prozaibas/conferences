@@ -17,7 +17,7 @@ use \App\Http\Controllers\ConferencesController;
 |
 */
 Route::resource('articles', ArticlesController::class);
-Route::resource('conferences', ConferencesController::class);
+
 Route::get('/', function () {
     return view('index');
 });
@@ -26,10 +26,10 @@ Route::get('/contact', function () {
 });
 
 Route::middleware('auth')->group(function(){
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('conferences', ConferencesController::class);
 });
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('login', [LoginController::class, 'login'])->name('login');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 

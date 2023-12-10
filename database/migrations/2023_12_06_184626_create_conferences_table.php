@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('conferences', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->date('time');
+            $table->string('adress');
+            $table->integer('members')->nullable();
             $table->timestamps();
         });
     }
